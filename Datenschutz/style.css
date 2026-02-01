@@ -319,6 +319,108 @@ a:hover { color: var(--primary-dark); }
     line-height: 1.8;
 }
 
+/* === Breadcrumb === */
+.breadcrumb-section {
+    padding: var(--space-md) 0;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary);
+}
+
+.breadcrumb .separator {
+    margin: 0 var(--space-sm);
+    color: var(--secondary);
+}
+
+.breadcrumb .current {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* === Service Intro (Info-Box Design) === */
+.service-intro {
+    padding: var(--space-xl) 0;
+    background: var(--bg-white);
+}
+
+.info-box {
+    background: var(--bg-light);
+    padding: var(--space-xl);
+    border-radius: var(--radius);
+    border-left: 5px solid var(--primary);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* === Process Steps (Ursprüngliche Version V1) === */
+.process-section {
+    padding: var(--space-xl) 0;
+    background: var(--bg-light);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.process-card {
+    background: var(--bg-white);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    text-align: left;
+}
+
+.step-number {
+    /* Ursprüngliche V1 Design: Große Nummer oben rechts */
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-lg);
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(30, 64, 175, 0.1); /* Wasserzeichen Effekt */
+    line-height: 1;
+}
+
+.process-card h3 {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+    /* Sicherstellen, dass Text nicht hinter Nummer verschwindet (optional, aber mit kurzem Text nicht nötig) */
+    position: relative; 
+    z-index: 1;
+}
+
+.process-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
 /* === Services Grid === */
 .services {
     padding: var(--space-2xl) 0;
@@ -397,7 +499,6 @@ a:hover { color: var(--primary-dark); }
 .service-card:hover .service-icon {
     background: var(--primary);
     color: white;
-    /* Rotation entfernt */
 }
 
 .service-card h3 {
@@ -410,7 +511,6 @@ a:hover { color: var(--primary-dark); }
     margin-bottom: var(--space-md);
 }
 
-/* WICHTIG: Links in Service-Karten sind standardmäßig blau */
 .service-card a {
     color: var(--primary);
     font-weight: 600;
@@ -423,158 +523,75 @@ a:hover { color: var(--primary-dark); }
     gap: 0.5rem;
 }
 
-/* === Integrierte Sektion: Service & Trust === */
-.combined-section {
-    padding: var(--space-2xl) 0;
+/* === Checklist Section === */
+.checklist-section {
+    padding: var(--space-xl) 0;
     background: var(--bg-white);
 }
 
-.combined-grid {
+.checklist-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-xl);
-    align-items: start;
 }
 
 @media (min-width: 992px) {
-    .combined-grid {
-        grid-template-columns: 4fr 5fr;
+    .checklist-wrapper {
+        grid-template-columns: 2fr 1fr;
     }
 }
 
-.full-width-title {
-    grid-column: 1 / -1;
-    margin-bottom: var(--space-lg);
-    color: var(--text-dark);
-    border-bottom: 2px solid var(--bg-light);
-    padding-bottom: var(--space-sm);
-}
-
-.combined-left p {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: var(--space-xl);
-}
-
-.trust-badges-wrapper {
-    background: var(--bg-light);
-    padding: var(--space-md);
-    border-radius: var(--radius);
-    border-left: 4px solid var(--primary);
-}
-
-.trust-badges-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--secondary);
-    margin-bottom: var(--space-md);
-    font-weight: 700;
-}
-
-.trust-badges-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 0.95rem;
-}
-
-.trust-badge svg {
-    color: var(--success);
-    flex-shrink: 0;
-}
-
-/* Service List Side */
-.service-list-side {
+.styled-checklist {
     list-style: none;
     padding: 0;
 }
 
-.service-list-side li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px dashed var(--border);
-}
-
-.service-list-side li:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.list-icon-check {
-    color: var(--success);
-    font-size: 1.25rem;
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-top: 2px;
-    background: #ecfdf5;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
+.styled-checklist li {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.list-content h4 {
-    margin-bottom: 0.25rem;
-    color: var(--primary);
-}
-
-.list-content p {
-    margin-bottom: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* === Kontakt Sektion === */
-.contact-section-new {
-    padding: var(--space-2xl) 0;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
     background: var(--bg-light);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary);
+    font-weight: 500;
 }
 
-.contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-    align-items: stretch; 
+.styled-checklist li svg {
+    color: var(--success);
+    flex-shrink: 0;
 }
 
-@media (min-width: 992px) {
-    .contact-wrapper {
-        grid-template-columns: 4fr 6fr;
-    }
-}
-
-.contact-card-left a {
-    display: inline;
-    font-size: inherit;
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    color: var(--primary);
-    font-weight: 600;
-    margin: 0;
-    margin-right: 0.5rem;
-}
-
-.service-card-cta {
+.checklist-cta {
+    background: var(--primary-dark);
+    color: white;
+    padding: var(--space-lg);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.checklist-cta h3 {
+    color: white;
+}
+
+.checklist-cta p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: var(--space-lg);
+}
+
+.checklist-cta .btn {
+    background: white;
+    color: var(--primary);
+}
+
+.checklist-cta .btn:hover {
+    background: var(--bg-light);
 }
 
 /* === Testimonials (Kundenbewertungen) === */
@@ -607,7 +624,7 @@ a:hover { color: var(--primary-dark); }
 }
 
 .stars {
-    color: #f59e0b; /* Goldgelb für Sterne */
+    color: #f59e0b; 
     font-size: 1.2rem;
     margin-bottom: var(--space-sm);
 }
@@ -774,7 +791,6 @@ a:hover { color: var(--primary-dark); }
     color: white;
 }
 
-/* === FIX: Spezifische Überschreibung für Buttons innerhalb von Service-Karten === */
 .service-card .btn {
     color: var(--primary);
 }
@@ -816,13 +832,8 @@ a:hover { color: var(--primary-dark); }
         to { opacity: 1; transform: translateY(0); }
     }
     
-    /* FIXED BLOCK START */
     .dropdown-menu {
-        position: static; /* Im Fluss lassen */
-        transform: none; /* WICHTIG: Verschiebung zurücksetzen */
-        left: auto;
-        top: auto;
-        width: 100%; /* Volle Breite */
+        position: static;
         box-shadow: none;
         margin-left: var(--space-md);
         margin-top: var(--space-xs);
@@ -832,7 +843,6 @@ a:hover { color: var(--primary-dark); }
         animation: none;
         display: none;
     }
-    /* FIXED BLOCK END */
     
     .nav-item.active .dropdown-menu {
         display: block;
@@ -842,10 +852,6 @@ a:hover { color: var(--primary-dark); }
         padding: var(--space-xl) 0;
         text-align: center;
         min-height: 60vh;
-    }
-    
-    .trust-badges-grid {
-        grid-template-columns: 1fr;
     }
     
     .faq-grid {
