@@ -816,8 +816,13 @@ a:hover { color: var(--primary-dark); }
         to { opacity: 1; transform: translateY(0); }
     }
     
+    /* FIXED BLOCK START */
     .dropdown-menu {
-        position: static;
+        position: static; /* Im Fluss lassen */
+        transform: none; /* WICHTIG: Verschiebung zurücksetzen */
+        left: auto;
+        top: auto;
+        width: 100%; /* Volle Breite */
         box-shadow: none;
         margin-left: var(--space-md);
         margin-top: var(--space-xs);
@@ -827,6 +832,7 @@ a:hover { color: var(--primary-dark); }
         animation: none;
         display: none;
     }
+    /* FIXED BLOCK END */
     
     .nav-item.active .dropdown-menu {
         display: block;
