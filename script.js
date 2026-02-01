@@ -16,18 +16,27 @@ document.addEventListener('click', function(e) {
 });
 
 // Dropdown Handling für Mobile (Tap statt Hover)
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', function(e) {
+// Wir listen jetzt auf .nav-link (den Text) statt auf das .nav-item (den Container)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            // Verhindern, dass der Link sofort ausgeführt wird, wenn ein Dropdown existiert
-            if (this.querySelector('.dropdown-menu')) {
-                e.preventDefault();
+            const parent = this.parentElement; // Das li.nav-item
+            const dropdown = parent.querySelector('.dropdown-menu');
+
+            // Nur reagieren, wenn ein Dropdown existiert
+            if (dropdown) {
+                e.preventDefault(); // Verhindert das Springen nach oben (#)
                 e.stopPropagation();
-                // Toggle active class für dieses Item, aber schließe andere
+
+                // Toggle active class für dieses Item
+                parent.classList.toggle('active');
+
+                // Alle anderen offenen Dropdowns schließen
                 document.querySelectorAll('.nav-item').forEach(otherItem => {
-                    if (otherItem !== this) otherItem.classList.remove('active');
+                    if (otherItem !== parent) {
+                        otherItem.classList.remove('active');
+                    }
                 });
-                this.classList.toggle('active');
             }
         }
     });
