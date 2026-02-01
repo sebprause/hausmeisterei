@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. Title-Tag -->
+    <title>Kontakt – Hausmeisterei</title>
+    
+    <!-- 2. Meta Description -->
+    <meta name="description" content="Kontaktieren Sie die Hausmeisterei für Winterdienst und Hausmeisterservice in Hamburg, Norderstedt, Ahrensburg, Bargteheide, Pinneberg und Wedel. Wir sind für Sie da.">
+    
+    <!-- 3. Meta Robots -->
+    <meta name="robots" content="index, follow">
+    
+    <!-- 4. Canonical Tag -->
+    <link rel="canonical" href="https://hausmeisterei.net/kontakt/">
+
+    <!-- 5. Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hausmeisterei.net/kontakt/">
+    <meta property="og:title" content="Kontakt – Hausmeisterei">
+    <meta property="og:description" content="Kontaktieren Sie die Hausmeisterei für Winterdienst und Hausmeisterservice in Hamburg und Umgebung.">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Externe CSS Datei -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Zusätzliche Styles für die Kontakt-Karten -->
+    <style>
+        .simple-page-section {
+            padding: var(--space-2xl) 0;
+            background: var(--bg-light);
+            min-height: 60vh;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            padding: var(--space-xl);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .contact-icon-large {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+        }
+        
+        .contact-icon-large svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: var(--space-sm);
+            font-size: 1.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            margin-bottom: var(--space-lg);
+            font-size: 1.1rem;
+        }
+
+        .region-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .region-list li {
+            padding: 0.5rem;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .region-list li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:04022633763">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        040 22633763
+                    </a>
+                    <a href="mailto:kontakt@hausmeisterei.net">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        kontakt@hausmeisterei.net
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/" class="logo">
+                        Hausmeisterei
+                    </a>
+                    
+                    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menü öffnen">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    </button>
+                    
+                    <nav>
+                        <ul class="nav" id="mainNav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Regionen ▾</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/">Hamburg</a></li>
+                                    <li><a href="/norderstedt/">Norderstedt</a></li>
+                                    <li><a href="/bargteheide/">Bargteheide</a></li>
+                                    <li><a href="/ahrensburg/">Ahrensburg</a></li>
+                                    <li><a href="/pinneberg/">Pinneberg</a></li>
+                                    <li><a href="/wedel/">Wedel</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/kontakt/" class="nav-link active">Kontakt</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb (Ohne Startseite) -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <span class="current">Kontakt</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Content (Ohne Hero, ohne Formular) -->
+    <section class="simple-page-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h1>Kontaktieren Sie uns</h1>
+                <p>Wir sind persönlich für Sie erreichbar. Egal ob Winterdienstnotfall oder Anfrage zur Gartenpflege – rufen Sie uns an oder schreiben Sie uns.</p>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Telefon Card -->
+                <div class="contact-card reveal delay-100">
+                    <div class="contact-icon-large">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <h3>Telefon</h3>
+                    <p>Für schnelle Hilfe und direkte Absprachen.</p>
+                    <a href="tel:04022633763" class="btn btn-primary">040 22633763 anrufen</a>
+                </div>
+
+                <!-- E-Mail Card -->
+                <div class="contact-card reveal delay-200">
+                    <div class="contact-icon-large">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <h3>E-Mail</h3>
+                    <p>Für detaillierte Anfragen und schriftliche Angebote.</p>
+                    <a href="mailto:kontakt@hausmeisterei.net" class="btn">E-Mail schreiben</a>
+                </div>
+
+                <!-- Regionen Card -->
+                <div class="contact-card reveal delay-300">
+                    <div class="contact-icon-large">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3>Servicegebiet</h3>
+                    <p>Wir sind aktiv in diesen Regionen:</p>
+                    <ul class="region-list">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Hamburg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Norderstedt</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ahrensburg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Bargteheide</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pinneberg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Wedel</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="reveal">
+                    <h3>Hausmeisterei</h3>
+                    <p>Ihr zuverlässiger Hausmeisterservice in Hamburg und Umgebung.</p>
+                </div>
+                
+                <div class="reveal delay-100">
+                    <h3>Unsere Regionen</h3>
+                    <div class="footer-regions-grid">
+                        <a href="/">Hamburg</a>
+                        <a href="/norderstedt/">Norderstedt</a>
+                        <a href="/bargteheide/">Bargteheide</a>
+                        <a href="/ahrensburg/">Ahrensburg</a>
+                        <a href="/pinneberg/">Pinneberg</a>
+                        <a href="/wedel/">Wedel</a>
+                    </div>
+                </div>
+                
+                <div class="reveal delay-200">
+                    <h3>Kontakt</h3>
+                    <a href="tel:04022633763">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        040 22633763
+                    </a>
+                    <a href="mailto:kontakt@hausmeisterei.net">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        kontakt@hausmeisterei.net
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="/impressum/">Impressum</a>
+                    <a href="/datenschutz/">Datenschutz</a>
+                    <a href="/kontakt/">Kontakt</a>
+                </div>
+                <p>&copy; 2026 Hausmeisterei. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Externe JS Datei -->
+    <script src="script.js"></script>
+</body>
+</html>
