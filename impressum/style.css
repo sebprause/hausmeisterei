@@ -52,6 +52,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform;
 }
 
 .reveal.active {
@@ -117,12 +118,12 @@ a:hover { color: var(--primary-dark); }
 
 /* Header Top - Nur Desktop/Tablet (≥769px) */
 .header-top {
-    display: none; /* Standard: ausgeblendet */
+    display: none;
 }
 
 @media (min-width: 769px) {
     .header-top {
-        display: block; /* Ab Tablet/Desktop sichtbar */
+        display: block;
         background: var(--primary-dark);
         color: white;
         padding: var(--space-xs) 0;
@@ -202,6 +203,8 @@ a:hover { color: var(--primary-dark); }
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
+    min-height: 44px;
+    min-width: 44px;
 }
 
 .nav-toggle:hover {
@@ -227,6 +230,9 @@ a:hover { color: var(--primary-dark); }
     border-radius: var(--radius);
     transition: var(--transition);
     position: relative;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-link::after {
@@ -277,6 +283,9 @@ a:hover { color: var(--primary-dark); }
     color: var(--text-dark);
     border-radius: var(--radius);
     font-size: 0.95rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .dropdown-menu a:hover {
@@ -286,12 +295,12 @@ a:hover { color: var(--primary-dark); }
 
 /* === Breadcrumb Section - Nur Desktop/Tablet (≥769px) === */
 .breadcrumb-section {
-    display: none; /* Standard: ausgeblendet */
+    display: none;
 }
 
 @media (min-width: 769px) {
     .breadcrumb-section {
-        display: block; /* Ab Tablet/Desktop sichtbar */
+        display: block;
         background: var(--bg-light);
         padding: var(--space-sm) 0;
         border-bottom: 1px solid var(--border);
@@ -343,6 +352,7 @@ a:hover { color: var(--primary-dark); }
     background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 20%),
                 radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 20%);
     animation: pulseBackground 10s infinite alternate;
+    will-change: transform;
 }
 
 @keyframes pulseBackground {
@@ -956,6 +966,9 @@ a:hover { color: var(--primary-dark); }
     display: block;
     margin-bottom: var(--space-xs);
     transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .footer a:hover {
@@ -975,6 +988,12 @@ a:hover { color: var(--primary-dark); }
     gap: var(--space-md);
     justify-content: center;
     margin-bottom: var(--space-sm);
+}
+
+.footer-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .footer-regions-grid {
@@ -999,6 +1018,7 @@ a:hover { color: var(--primary-dark); }
     cursor: pointer;
     font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 48px;
 }
 
 .btn:hover {
@@ -1025,14 +1045,53 @@ a:hover { color: var(--primary-dark); }
     color: white;
 }
 
+/* === Accessibility - Fokus-Styling === */
+a:focus-visible,
+button:focus-visible,
+.nav-link:focus-visible,
+.btn:focus-visible,
+.dropdown-menu a:focus-visible,
+.footer a:focus-visible,
+.service-card a:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* Entfernt Default-Focus für Maus, behält es für Tastatur */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .hero::before {
+        animation: none;
+    }
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
     .nav-toggle {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
     
     .nav {
@@ -1078,6 +1137,10 @@ a:hover { color: var(--primary-dark); }
         display: block;
     }
     
+    .dropdown-menu a {
+        padding: var(--space-md);
+    }
+    
     .hero {
         padding: var(--space-xl) 0;
         text-align: center;
@@ -1102,5 +1165,20 @@ a:hover { color: var(--primary-dark); }
     
     .checklist-cta {
         position: static;
+    }
+    
+    /* Touch-Targets vergrößern */
+    .service-card a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .styled-checklist li {
+        padding: var(--space-md);
+    }
+    
+    .faq-card {
+        padding: var(--space-xl);
     }
 }
