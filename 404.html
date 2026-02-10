@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden – Hausmeisterei Hamburg</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://hausmeisterei.net/404.html">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Spezifische Styles für 404 Seite */
+        .error-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl) 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .error-container {
+            max-width: 600px;
+            padding: var(--space-xl);
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--space-md);
+            opacity: 0.2;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-lg);
+            color: var(--primary);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 0.2;
+                transform: translateY(0);
+            }
+        }
+
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--text-dark);
+            margin-bottom: var(--space-md);
+        }
+
+        .error-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: var(--space-xl);
+            line-height: 1.7;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-xl);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .helpful-links {
+            background: var(--bg-white);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: left;
+        }
+
+        .helpful-links h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+
+        .helpful-links ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+        }
+
+        .helpful-links li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .helpful-links a {
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .helpful-links a:hover {
+            background: var(--bg-light);
+            padding-left: 0.75rem;
+        }
+
+        .helpful-links svg {
+            width: 18px;
+            height: 18px;
+            color: var(--success);
+        }
+
+        @media (max-width: 480px) {
+            .error-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .error-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:04022633763">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        040 22633763
+                    </a>
+                    <a href="mailto:kontakt@hausmeisterei.net">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        kontakt@hausmeisterei.net
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/" class="logo">
+                        Hausmeisterei <span class="logo-location">Hamburg</span>
+                    </a>
+                    
+                    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menü öffnen">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    </button>
+                    
+                    <nav>
+                        <ul class="nav" id="mainNav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Regionen ▾</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/">Hamburg</a></li>
+                                    <li><a href="/norderstedt/">Norderstedt</a></li>
+                                    <li><a href="/bargteheide/">Bargteheide</a></li>
+                                    <li><a href="/ahrensburg/">Ahrensburg</a></li>
+                                    <li><a href="/pinneberg/">Pinneberg</a></li>
+                                    <li><a href="/wedel/">Wedel</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/kontakt/" class="nav-link">Kontakt</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 404 Content -->
+    <main class="error-section">
+        <div class="container">
+            <div class="error-container reveal active">
+                <div class="error-code">404</div>
+                
+                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                
+                <h1 class="error-title">Seite nicht gefunden</h1>
+                
+                <p class="error-text">
+                    Die von Ihnen gesuchte Seite existiert leider nicht oder wurde verschoben. 
+                    Keine Sorge – wir helfen Ihnen, den richtigen Weg zu finden!
+                </p>
+                
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                        Zur Startseite
+                    </a>
+                    <a href="/kontakt/" class="btn btn-outline">
+                        <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Kontakt aufnehmen
+                    </a>
+                </div>
+                
+                <div class="helpful-links">
+                    <h3>Vielleicht suchen Sie nach:</h3>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/treppenhausreinigung-hamburg/">Treppenhausreinigung</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/gartenpflege-hamburg/">Gartenpflege</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/winterdienst-hamburg/">Winterdienst</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/glasreinigung-hamburg/">Glasreinigung</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/haushaltsauflosung-hamburg/">Haushaltsauflösung</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <a href="/dachrinnenreinigung-hamburg/">Dachrinnenreinigung</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Hausmeisterei Hamburg</h3>
+                    <p>Ihr professioneller Partner für Gebäudemanagement und Hausmeisterdienste in Hamburg und Umgebung.</p>
+                </div>
+                
+                <div>
+                    <h3>Schnelllinks</h3>
+                    <a href="/">Startseite</a>
+                    <a href="/kontakt/">Kontakt</a>
+                    <a href="/impressum/">Impressum</a>
+                    <a href="/datenschutz/">Datenschutz</a>
+                </div>
+                
+                <div>
+                    <h3>Kontakt</h3>
+                    <a href="tel:04022633763">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        040 22633763
+                    </a>
+                    <a href="mailto:kontakt@hausmeisterei.net">
+                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        kontakt@hausmeisterei.net
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hausmeisterei Hamburg. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
