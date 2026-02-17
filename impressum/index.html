@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. Title-Tag -->
+    <!-- SEO Tags -->
     <title>Impressum – Hausmeisterei</title>
-    
-    <!-- 2. Meta Description -->
-    <meta name="description" content="Rechtliche Angaben gemäß § 5 TMG für die KPGD Facility Management GmbH. Kontaktinformationen und Haftungsausschluss.">
-    
-    <!-- 3. Meta Robots -->
+    <meta name="description" content="Rechtliche Angaben gemäß § 5 TMG für die Hausmeisterei. Kontaktinformationen und Haftungsausschluss.">
     <meta name="robots" content="noindex, follow">
-    
-    <!-- 4. Canonical Tag -->
     <link rel="canonical" href="https://hausmeisterei.net/impressum/">
 
-    <!-- 5. Open Graph Tags -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hausmeisterei.net/impressum/">
     <meta property="og:title" content="Impressum – Hausmeisterei">
@@ -26,9 +20,9 @@
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <!-- Externe CSS Datei -->
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Zusätzliche Styles für das Impressum -->
     <style>
         .simple-page-section {
@@ -45,28 +39,46 @@
             margin: 0 auto;
         }
 
+        .legal-content h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--space-sm);
+            color: var(--text-dark);
+        }
+
         .legal-content h2 {
             font-size: 1.5rem;
             margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
             border-bottom: 1px solid var(--border);
             padding-bottom: var(--space-sm);
             color: var(--primary-dark);
         }
 
-        .legal-content h3 {
-            font-size: 1.25rem;
-            margin-top: var(--space-lg);
-            color: var(--text-dark);
-        }
-
-        .legal-content p, .legal-content ul {
+        .legal-content p {
             color: var(--text-light);
             line-height: 1.8;
             margin-bottom: var(--space-md);
+            font-size: clamp(0.95rem, 2vw, 1rem);
         }
-        
-        .legal-content ul {
-            padding-left: 1.5rem;
+
+        .legal-content a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .legal-content a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .legal-content {
+                padding: var(--space-lg);
+            }
+            
+            .legal-content h2 {
+                font-size: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -123,7 +135,6 @@
         </div>
     </header>
 
-
     <!-- Impressum Content -->
     <section class="simple-page-section">
         <div class="container">
@@ -141,7 +152,7 @@
                 <h2>Vertretungsberechtigter Geschäftsführer</h2>
                 <p>Sebastian Prause</p>
 
-                <h2>Kontakt:</h2>
+                <h2>Kontakt</h2>
                 <p>
                     Telefon: <a href="tel:04022633763">040 22633763</a><br>
                     E-Mail: <a href="mailto:kontakt@hausmeisterei.net">kontakt@hausmeisterei.net</a>
@@ -161,7 +172,7 @@
 
                 <h2>EU-Streitschlichtung</h2>
                 <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit. Die Plattform ist unter dem externen Link https://ec.europa.eu/consumers/odr/ erreichbar.
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit. Die Plattform ist unter dem externen Link <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a> erreichbar.
                 </p>
                 <p>
                     Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
@@ -215,7 +226,7 @@
         </div>
     </footer>
 
-    <!-- Externe JS Datei -->
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
