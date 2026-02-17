@@ -929,7 +929,7 @@ a:hover {
     margin: 0 auto var(--space-lg);
 }
 
-/* === Footer === */
+/* === Footer - KORRIGIERT === */
 .footer {
     background: var(--text-dark);
     color: rgba(255,255,255,0.7);
@@ -938,20 +938,21 @@ a:hover {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-xl);
+    grid-template-columns: repeat(3, 1fr); /* Immer 3 Spalten */
+    gap: var(--space-lg);
     margin-bottom: var(--space-lg);
 }
 
 .footer h3 {
     color: white;
     margin-bottom: var(--space-md);
-    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
 }
 
 .footer p {
     color: rgba(255,255,255,0.6);
-    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    line-height: 1.6;
 }
 
 .footer a {
@@ -962,7 +963,7 @@ a:hover {
     min-height: 44px;
     display: flex;
     align-items: center;
-    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
 .footer a:hover {
@@ -974,7 +975,7 @@ a:hover {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: var(--space-md);
     text-align: center;
-    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
 .footer-links {
@@ -993,8 +994,94 @@ a:hover {
 
 .footer-regions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1.5rem; 
+    grid-template-columns: 1fr 1fr; /* 2 Spalten für Regionen */
+    gap: 0.5rem 1rem; 
+}
+
+/* Tablet: 3 Spalten beibehalten, aber kompakter */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+    }
+    
+    .footer {
+        padding: var(--space-lg) 0 var(--space-md);
+    }
+}
+
+/* Mobile: Weiterhin 3 Spalten, aber noch kompakter */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr); /* Bleibt 3 Spalten! */
+        gap: var(--space-sm);
+        text-align: left; /* Links ausrichten statt zentriert */
+    }
+    
+    .footer h3 {
+        font-size: 0.95rem;
+        margin-bottom: var(--space-sm);
+    }
+    
+    .footer p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+    
+    .footer a {
+        font-size: 0.8rem;
+        min-height: 36px; /* Etwas kleiner auf Mobile */
+        margin-bottom: 0.25rem;
+    }
+    
+    .footer a:hover {
+        padding-left: 0; /* Kein Hover-Effekt mit Padding auf Touch */
+    }
+    
+    .footer-regions-grid {
+        grid-template-columns: 1fr; /* Regionen untereinander in der Spalte */
+        gap: 0.25rem;
+    }
+    
+    /* Footer-Bottom anpassen */
+    .footer-bottom {
+        padding-top: var(--space-sm);
+    }
+    
+    .footer-links {
+        gap: var(--space-sm);
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra kleine Geräte: Optional auf 2+1 Layout wechseln */
+@media (max-width: 480px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr; /* 2 Spalten */
+        gap: var(--space-md);
+    }
+    
+    /* Die erste Spalte (Beschreibung) nimmt volle Breite */
+    .footer-content > div:first-child {
+        grid-column: 1 / -1;
+    }
+    
+    /* Regionen und Kontakt nebeneinander */
+    .footer-content > div:nth-child(2),
+    .footer-content > div:nth-child(3) {
+        grid-column: span 1;
+    }
+    
+    .footer h3 {
+        font-size: 1rem;
+    }
+    
+    .footer-regions-grid {
+        grid-template-columns: 1fr 1fr; /* Regionen wieder 2-spaltig */
+    }
 }
 
 /* === Button Styles === */
@@ -1293,26 +1380,6 @@ button:focus:not(:focus-visible) {
     /* Testimonials Mobile */
     .testimonials-grid {
         grid-template-columns: 1fr;
-    }
-
-    /* Footer Mobile */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        text-align: center;
-    }
-    
-    .footer-regions-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-xs);
-    }
-    
-    .footer a {
-        justify-content: center;
-    }
-    
-    .footer a:hover {
-        padding-left: 0;
     }
 }
 
