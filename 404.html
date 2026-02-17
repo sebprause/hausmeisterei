@@ -9,20 +9,33 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Spezifische Styles für 404 Seite */
+        /* === 404 Spezifische Styles === */
         .error-section {
             min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-xl) 0;
-            background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+            padding: var(--space-3xl) 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(30, 58, 138, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .error-container {
-            max-width: 600px;
+            max-width: 700px;
             padding: var(--space-xl);
+            position: relative;
+            z-index: 1;
         }
 
         .error-code {
@@ -31,32 +44,32 @@
             color: var(--primary);
             line-height: 1;
             margin-bottom: var(--space-md);
-            opacity: 0.2;
-            animation: fadeInDown 1s ease-out;
+            opacity: 0.15;
+            animation: fadeInScale 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 0.15;
+                transform: scale(1);
+            }
         }
 
         .error-icon {
-            width: 80px;
-            height: 80px;
+            width: 64px;
+            height: 64px;
             margin: 0 auto var(--space-lg);
             color: var(--primary);
-            animation: bounce 2s infinite;
+            animation: gentleBounce 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        @keyframes bounce {
+        @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 0.2;
-                transform: translateY(0);
-            }
+            50% { transform: translateY(-8px); }
         }
 
         .error-title {
@@ -66,10 +79,13 @@
         }
 
         .error-text {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-light);
             margin-bottom: var(--space-xl);
-            line-height: 1.7;
+            line-height: 1.8;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .error-actions {
@@ -77,71 +93,113 @@
             gap: var(--space-md);
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: var(--space-xl);
+            margin-bottom: var(--space-2xl);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
+            box-shadow: none;
         }
 
         .btn-outline:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(30, 58, 138, 0.2);
         }
 
+        /* Helpful Links als Card-Grid */
         .helpful-links {
             background: var(--bg-white);
-            padding: var(--space-lg);
-            border-radius: var(--radius);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             text-align: left;
+            transition: var(--transition);
+        }
+
+        .helpful-links:hover {
+            box-shadow: var(--shadow-md);
         }
 
         .helpful-links h3 {
             font-size: 1.1rem;
             color: var(--text-dark);
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
             text-align: center;
+            position: relative;
+            padding-bottom: var(--space-sm);
+        }
+
+        .helpful-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--primary);
         }
 
         .helpful-links ul {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: var(--space-sm);
         }
 
         .helpful-links li {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .helpful-links a {
-            color: var(--primary);
+            color: var(--text-dark);
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem;
+            padding: var(--space-sm);
             border-radius: var(--radius);
             transition: var(--transition);
+            width: 100%;
+            min-height: 44px;
         }
 
         .helpful-links a:hover {
             background: var(--bg-light);
-            padding-left: 0.75rem;
+            color: var(--primary);
+            padding-left: var(--space-md);
         }
 
         .helpful-links svg {
-            width: 18px;
-            height: 18px;
-            color: var(--success);
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: var(--transition);
         }
 
-        @media (max-width: 480px) {
+        .helpful-links a:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* === Responsive Anpassungen === */
+        @media (max-width: 768px) {
+            .error-section {
+                padding: var(--space-xl) 0;
+                min-height: 70vh;
+            }
+
+            .error-container {
+                padding: var(--space-md);
+            }
+
             .error-actions {
                 flex-direction: column;
                 width: 100%;
@@ -149,6 +207,41 @@
             
             .error-actions .btn {
                 width: 100%;
+            }
+
+            .helpful-links {
+                padding: var(--space-lg);
+            }
+
+            .helpful-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .helpful-links {
+                padding: var(--space-md);
+            }
+        }
+
+        /* === Reduced Motion === */
+        @media (prefers-reduced-motion: reduce) {
+            .error-code,
+            .error-icon {
+                animation: none;
+            }
+            
+            .error-code {
+                opacity: 0.15;
             }
         }
     </style>
@@ -176,10 +269,10 @@
             <div class="container">
                 <div class="header-content">
                     <a href="/" class="logo">
-                        Hausmeisterei <span class="logo-location">Hamburg</span>
+                        Hausmeisterei <span>Hamburg</span>
                     </a>
                     
-                    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menü öffnen">
+                    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menü öffnen/schließen">
                         <svg class="icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
                     </button>
                     
@@ -212,7 +305,7 @@
             <div class="error-container reveal active">
                 <div class="error-code">404</div>
                 
-                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -227,20 +320,20 @@
                 
                 <div class="error-actions">
                     <a href="/" class="btn btn-primary">
-                        <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                        <svg class="icon" viewBox="0 0 24 24">
                             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                         </svg>
                         Zur Startseite
                     </a>
                     <a href="/kontakt/" class="btn btn-outline">
-                        <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                        <svg class="icon" viewBox="0 0 24 24">
                             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                         </svg>
                         Kontakt aufnehmen
                     </a>
                 </div>
                 
-                <div class="helpful-links">
+                <div class="helpful-links reveal delay-100">
                     <h3>Vielleicht suchen Sie nach:</h3>
                     <ul>
                         <li>
@@ -295,27 +388,43 @@
                 </div>
                 
                 <div>
-                    <h3>Schnelllinks</h3>
-                    <a href="/">Startseite</a>
-                    <a href="/kontakt/">Kontakt</a>
-                    <a href="/impressum/">Impressum</a>
-                    <a href="/datenschutz/">Datenschutz</a>
+                    <h3>Regionen</h3>
+                    <div class="footer-regions-grid">
+                        <a href="/">Hamburg</a>
+                        <a href="/norderstedt/">Norderstedt</a>
+                        <a href="/bargteheide/">Bargteheide</a>
+                        <a href="/ahrensburg/">Ahrensburg</a>
+                        <a href="/pinneberg/">Pinneberg</a>
+                        <a href="/wedel/">Wedel</a>
+                    </div>
                 </div>
                 
                 <div>
-                    <h3>Kontakt</h3>
+                    <h3>Rechtliches</h3>
+                    <a href="/impressum/">Impressum</a>
+                    <a href="/datenschutz/">Datenschutz</a>
+                    <a href="/kontakt/">Kontakt</a>
+                </div>
+                
+                <div>
+                    <h3>Direktkontakt</h3>
                     <a href="tel:04022633763">
-                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;margin-right:0.5rem"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         040 22633763
                     </a>
                     <a href="mailto:kontakt@hausmeisterei.net">
-                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;margin-right:0.5rem"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         kontakt@hausmeisterei.net
                     </a>
                 </div>
             </div>
             
             <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="/kontakt/">Kontakt</a>
+                    <a href="/impressum/">Impressum</a>
+                    <a href="/datenschutz/">Datenschutz</a>
+                </div>
                 <p>&copy; 2026 Hausmeisterei Hamburg. Alle Rechte vorbehalten.</p>
             </div>
         </div>
