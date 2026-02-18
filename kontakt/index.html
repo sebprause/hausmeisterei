@@ -26,15 +26,51 @@
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <!-- Styles -->
+    <!-- Externe CSS Datei -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Zusätzliche Styles für die Kontakt-Karten (angepasst an neues Design) -->
+    <!-- Zusätzliche Styles für die Kontaktseite -->
     <style>
-        .simple-page-section {
+        /* Kontaktseite spezifische Anpassungen */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--space-2xl) 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 20%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 20%);
+        }
+
+        .contact-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-hero h1 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+
+        .contact-hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Kontakt Grid im neuen Design-Stil */
+        .contact-section {
             padding: var(--space-3xl) 0;
             background: var(--bg-light);
-            min-height: 60vh;
         }
 
         .contact-grid {
@@ -55,7 +91,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100%;
             position: relative;
             overflow: hidden;
@@ -85,42 +121,42 @@
         }
 
         .contact-icon-large {
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
             background: rgba(14, 165, 233, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
             color: var(--primary);
             transition: var(--transition);
-            flex-shrink: 0;
         }
-        
+
         .contact-card:hover .contact-icon-large {
             background: var(--primary);
             color: white;
         }
-        
+
         .contact-icon-large svg {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
         }
 
         .contact-card h3 {
+            color: var(--primary);
             margin-bottom: var(--space-sm);
             font-size: clamp(1.25rem, 3vw, 1.5rem);
-            color: var(--primary);
         }
 
-        .contact-card p {
+        .contact-card > p {
             color: var(--text-light);
             margin-bottom: var(--space-lg);
             font-size: clamp(0.95rem, 2vw, 1.05rem);
-            line-height: 1.7;
+            flex-grow: 1;
         }
 
+        /* Regionen Liste Styling */
         .region-list {
             list-style: none;
             padding: 0;
@@ -129,20 +165,26 @@
             gap: var(--space-sm);
             text-align: left;
             width: 100%;
+            margin-top: auto;
         }
 
         .region-list li {
             padding: var(--space-sm);
             background: var(--bg-light);
             border-radius: var(--radius);
-            font-size: clamp(0.9rem, 2vw, 0.95rem);
+            font-size: 0.95rem;
             color: var(--text-dark);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-weight: 500;
+            transition: var(--transition);
         }
-        
+
+        .region-list li:hover {
+            background: var(--border);
+            transform: translateX(3px);
+        }
+
         .region-list li svg {
             width: 18px;
             height: 18px;
@@ -150,54 +192,98 @@
             flex-shrink: 0;
         }
 
-        /* Button Anpassungen für neue Styles */
-        .contact-card .btn {
-            margin-top: auto;
-            min-height: 48px;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
-
-        /* Section Header Anpassung */
-        .section-header {
+        /* CTA Section Anpassung */
+        .cta-section-contact {
+            background: var(--bg-white);
+            padding: var(--space-3xl) 0;
             text-align: center;
-            margin-bottom: var(--space-xl);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .section-header h1 {
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            color: white;
             margin-bottom: var(--space-md);
-            color: var(--text-dark);
         }
 
-        .section-header p {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            color: var(--text-light);
-            line-height: 1.8;
+        .cta-box p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: var(--space-lg);
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
         }
 
+        .cta-box .btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .cta-box .btn:hover {
+            background: var(--bg-light);
+            color: var(--primary-dark);
+        }
+
+        /* Footer Kontakt Icons Abstand korrigiert */
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: var(--space-xs);
+            color: rgba(255,255,255,0.8);
+            transition: color 0.2s;
+            min-height: 44px;
+        }
+
+        .footer-contact-item:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+
+        .footer-contact-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            fill: currentColor; /* Erbt die Farbe vom Parent */
+        }
+
+        /* Responsive Anpassungen */
         @media (max-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-md);
             }
-            
+
             .contact-card {
                 padding: var(--space-lg);
             }
-            
+
+            .contact-icon-large {
+                width: 64px;
+                height: 64px;
+            }
+
+            .contact-icon-large svg {
+                width: 32px;
+                height: 32px;
+            }
+
             .region-list {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .region-list {
-                grid-template-columns: 1fr;
+            .contact-card {
+                padding: var(--space-md);
             }
-            
-            .contact-card .btn {
+
+            .btn {
                 width: 100%;
             }
         }
@@ -256,14 +342,17 @@
         </div>
     </header>
 
-    <!-- Kontakt Content -->
-    <section class="simple-page-section">
+    <!-- Kontakt Hero -->
+    <section class="contact-hero">
         <div class="container">
-            <div class="section-header reveal">
-                <h1>Kontaktieren Sie uns</h1>
-                <p>Wir sind persönlich für Sie erreichbar. Egal ob Winterdienstnotfall oder Anfrage zur Gartenpflege – rufen Sie uns an oder schreiben Sie uns.</p>
-            </div>
+            <h1 class="reveal">Kontaktieren Sie uns</h1>
+            <p class="rereveal delay-100">Wir sind persönlich für Sie erreichbar. Egal ob Anfrage zu unseren Dienstleistungen oder direkte Absprachen – rufen Sie uns an oder schreiben Sie uns.</p>
+        </div>
+    </section>
 
+    <!-- Kontakt Content -->
+    <section class="contact-section">
+        <div class="container">
             <div class="contact-grid">
                 
                 <!-- Telefon Card -->
@@ -272,7 +361,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     </div>
                     <h3>Telefon</h3>
-                    <p>Für schnelle Hilfe und direkte Absprachen.</p>
+                    <p>Für schnelle Hilfe und direkte Absprachen. Wir sind Mo–Fr von 8–18 Uhr für Sie da.</p>
                     <a href="tel:04022633763" class="btn btn-primary">040 22633763 anrufen</a>
                 </div>
 
@@ -282,7 +371,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     </div>
                     <h3>E-Mail</h3>
-                    <p>Für detaillierte Anfragen und schriftliche Angebote.</p>
+                    <p>Für detaillierte Anfragen und schriftliche Angebote. Antwort innerhalb von 24 Stunden.</p>
                     <a href="mailto:kontakt@hausmeisterei.net" class="btn">E-Mail schreiben</a>
                 </div>
 
@@ -292,17 +381,31 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     </div>
                     <h3>Servicegebiet</h3>
-                    <p>Wir sind aktiv in diesen Regionen:</p>
+                    <p>Wir sind aktiv in diesen Regionen im Großraum Hamburg:</p>
                     <ul class="region-list">
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Hamburg</li>
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Norderstedt</li>
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ahrensburg</li>
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Bargteheide</li>
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pinneberg</li>
-                        <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Wedel</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Hamburg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Norderstedt</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ahrensburg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Bargteheide</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pinneberg</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Wedel</li>
                     </ul>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section-contact">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Direkte Hilfe benötigt?</h2>
+                <p>Bei dringenden Anliegen oder akuten Problemen erreichen Sie uns am schnellsten telefonisch. Wir kümmern uns sofort um Ihr Anliegen.</p>
+                <a href="tel:04022633763" class="btn btn-large">
+                    <svg class="icon" viewBox="0 0 24 24" style="width: 20px; height: 20px; margin-right: 0.5rem;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Jetzt anrufen
+                </a>
             </div>
         </div>
     </section>
@@ -313,7 +416,7 @@
             <div class="footer-content">
                 <div class="reveal">
                     <h3>Hausmeisterei</h3>
-                    <p>Ihr zuverlässiger Hausmeisterservice in Hamburg und Umgebung.</p>
+                    <p>Ihr zuverlässiger Hausmeisterservice in Hamburg und Umgebung. Professionell, flexibel und immer für Sie da.</p>
                 </div>
                 
                 <div class="reveal delay-100">
@@ -330,12 +433,12 @@
                 
                 <div class="reveal delay-200">
                     <h3>Kontakt</h3>
-                    <a href="tel:04022633763">
-                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:04022633763" class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                         040 22633763
                     </a>
-                    <a href="mailto:kontakt@hausmeisterei.net">
-                        <svg class="icon" viewBox="0 0 24 24" style="margin-right:0.5rem; width:18px;height:18px"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <a href="mailto:kontakt@hausmeisterei.net" class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         kontakt@hausmeisterei.net
                     </a>
                 </div>
@@ -352,7 +455,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Externe JS Datei -->
     <script src="script.js"></script>
 </body>
 </html>
