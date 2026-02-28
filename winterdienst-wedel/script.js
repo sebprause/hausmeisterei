@@ -35,11 +35,11 @@ document.querySelectorAll('.nav-link').forEach(link => {
           item.classList.remove('active');
         });
         
-        // Wenn es vorher NICHT offen war, jetzt öffnen
-        // Wenn es offen war, bleibt es geschlossen (Toggle-Effekt)
+        // Nur öffnen, wenn es vorher NICHT offen war (Toggle-Effekt)
         if (!isOpen) {
           parent.classList.add('active');
         }
+        // Wenn es offen war, bleibt es geschlossen ✓
       }
     }
   });
