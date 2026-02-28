@@ -30,7 +30,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
         // Prüfen, ob dieses Dropdown bereits offen ist
         const isOpen = parent.classList.contains('active');
         
-        // Zuerst ALLE Dropdowns schließen
+        // Zuerst ALLE Dropdowns schließen (inklusive diesem)
         document.querySelectorAll('.nav-item').forEach(item => {
           item.classList.remove('active');
         });
@@ -39,7 +39,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
         if (!isOpen) {
           parent.classList.add('active');
         }
-        // Wenn es offen war, bleibt es geschlossen ✓
+        // Wenn es offen war, bleibt es jetzt geschlossen ✓
       }
     }
   });
