@@ -27,19 +27,19 @@ document.querySelectorAll('.nav-link').forEach(link => {
         e.preventDefault();
         e.stopPropagation();
 
-        // Prüfen, ob dieses Dropdown bereits offen ist
+        // 1. Prüfen OB das Dropdown bereits offen ist (BEVOR wir etwas ändern)
         const isOpen = parent.classList.contains('active');
         
-        // Zuerst ALLE Dropdowns schließen (inklusive diesem)
+        // 2. Erst ALLE Dropdowns schließen (inklusive diesem!)
         document.querySelectorAll('.nav-item').forEach(item => {
           item.classList.remove('active');
         });
         
-        // Nur öffnen, wenn es vorher NICHT offen war (Toggle-Effekt)
+        // 3. Nur wieder öffnen, wenn es vorher NICHT offen war
         if (!isOpen) {
           parent.classList.add('active');
         }
-        // Wenn es offen war, bleibt es jetzt geschlossen ✓
+        // Wenn es offen war (isOpen = true), bleibt es jetzt geschlossen ✓
       }
     }
   });
